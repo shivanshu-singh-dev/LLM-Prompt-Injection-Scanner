@@ -1,0 +1,4 @@
+﻿requests
+pyyaml
+sentence-transformers
+numpy
