@@ -1,4 +1,7 @@
-﻿from sentence_transformers import SentenceTransformer
+import os
+os.environ["HF_HUB_OFFLINE"] = "1"
+
+from sentence_transformers import SentenceTransformer
 import numpy as np
 
 _model = None

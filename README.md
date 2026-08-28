@@ -75,6 +75,7 @@ Optional flags:
 - **Target support is Ollama-only.** `runner.py` calls Ollama's native `/api/generate` endpoint. It does not yet speak the OpenAI chat-completions schema, so it will not work against OpenAI or other OpenAI-compatible APIs without changes.
 - **LLM-judge defaults to judging its own target model.** Using `llama3.2` to judge `llama3.2`'s responses risks self-grading bias — a model susceptible to a jailbreak may also misjudge whether it just fell for one. Set `JUDGE_MODEL` in `llm_judge.py` to a different pulled model (e.g. `mistral`) to avoid this.
 - **Embedding detector threshold is hand-tuned**, not statistically validated against a labeled dataset.
+- **Base64 (`id_10`) and ROT13 (`id_16`) payloads are unreliable against small local models** such as `llama3.2:3B`. The model frequently fails to perform the decode correctly in the first place — a failure to decode is not evidence of injection resistance. These two payloads measure decode capability as much as safety alignment, and their results should be interpreted with that in mind.
 - **No automated tests.**
 
 ## Not yet implemented
